@@ -59,4 +59,4 @@ app.set('views', path.join(__dirname, 'resource', 'views'));
 routes(app);
 
 // Lắng nghe port
-app.listen(process.env.PORT, () => console.log('Server start at port ' + PORT));
+app.listen(process.env.PORT || 3000, () => console.log('Server start at port ' + PORT));
