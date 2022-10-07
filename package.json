@@ -1,0 +1,34 @@
+{
+    "name": "videoroom",
+    "version": "1.0.0",
+    "description": "videoroom backend web api",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "nodemon src/server.js",
+        "watch": "node-sass --watch src/resource/scss/ -o src/public/css/"
+    },
+    "keywords": [
+        "videoroom"
+    ],
+    "author": "sonhong443@gmail.com",
+    "license": "ISC",
+    "type": "module",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.3",
+        "express": "^4.18.1",
+        "express-handlebars": "^6.0.6",
+        "jsonwebtoken": "^8.5.1",
+        "method-override": "^3.0.0",
+        "mongoose": "^6.6.1",
+        "mongoose-delete": "^0.5.4",
+        "mongoose-sequence": "^5.3.1",
+        "mongoose-slug-generator": "^1.0.4"
+    },
+    "devDependencies": {
+        "morgan": "^1.10.0",
+        "node-sass": "^7.0.3",
+        "nodemon": "^2.0.20",
+        "prettier": "^2.7.1"
+    }
+}
