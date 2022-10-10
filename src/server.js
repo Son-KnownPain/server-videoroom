@@ -12,7 +12,6 @@ import routes from './routes/index.js';
 
 // Tạo instance app và port
 const app = express();
-const PORT = 5000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -59,4 +58,4 @@ app.set('views', path.join(__dirname, 'resource', 'views'));
 routes(app);
 
 // Lắng nghe port
-app.listen(process.env.PORT || 3000, () => console.log('Server start at port ' + PORT));
+app.listen(process.env.PORT || 3000, () => console.log('Server start at port ' + process.env.PORT || 3000));
