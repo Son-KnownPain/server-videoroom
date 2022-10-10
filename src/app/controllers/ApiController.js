@@ -15,7 +15,10 @@ class ApiController {
     userById(req, res, next) {
         User.findOne({ _id: req.params.id })
             .then((user) => {
-                res.json(user);
+                res.json({
+                    name: user.name,
+                    avatar: user.avatar,
+                });
             })
             .catch(next);
     }
