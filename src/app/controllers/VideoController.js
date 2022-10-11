@@ -1,6 +1,24 @@
 import Video from '../models/Video.js';
 
 class VideoController {
+    // [GET] /api/video/all
+    allVideos(req, res, next) {
+        Video.find({})
+            .then((videos) => {
+                res.json(videos);
+            })
+            .catch(next);
+    }
+
+    // [GET] /api/video/java
+    videoJava(req, res, next) {
+        Video.find({ session_name: 'Java' })
+            .then((videosJava) => {
+                res.json(videosJava);
+            })
+            .catch(next);
+    }
+
     // [GET] /videos/:id
     detailsById(req, res, next) {
         Video.findOne({ _id: req.params.id })

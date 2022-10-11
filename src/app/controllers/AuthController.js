@@ -49,16 +49,17 @@ class AuthController {
     // [POST] /auth/refresh-token
     refreshToken(req, res, next) {
         const clientRefreshToken = req.body.refreshToken;
-        if (!clientRefreshToken) return res.status(401).send('Have not refresh token');
+        if (!clientRefreshToken) return res.status(401).json({ message: 'You need refresh token' });
 
         jwt.verify(clientRefreshToken, process.env.REFRESH_TOKEN_SECRET, async (err, data) => {
-            if (err) return res.status(401).send('Invalid refresh token');
+            if (err) return res.status(401).json({ isVerify: false });
 
             const username = data.username;
 
             const token = await Token.findOne({ token_username: username });
 
             if (token) {
+                if (token.refresh_token !== clientRefreshToken) return res.json({ isVerify: false });
                 const newAccessToken = jwt.sign({ username }, process.env.ACCESS_TOKEN_SECRET, {
                     expiresIn: '30m',
                 });

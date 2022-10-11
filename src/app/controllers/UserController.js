@@ -1,6 +1,18 @@
 import User from '../models/User.js';
 
 class UserController {
+    // [GET] /users/:id
+    userById(req, res, next) {
+        User.findOne({ _id: req.params.id })
+            .then((user) => {
+                res.json({
+                    name: user.name,
+                    avatar: user.avatar,
+                });
+            })
+            .catch(next);
+    }
+
     // [POST] /users/store
     store(req, res, next) {
         const newUser = new User(req.body);
